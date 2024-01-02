@@ -64,6 +64,8 @@ const GetPost: React.FC = () => {
       }
 
       
+
+      
       const columns : GridColDef[]  = [
        
         {field : 'userId', headerName : 'Player ID', width : 100},

@@ -8,6 +8,7 @@ const employeeApi = createApi({
         endpoints: (builder) => ({
           getUsers: builder.query<IPlayers, void>({
             query: () => `getuser`,
+            keepUnusedDataFor: 1,  // To keep query cache for only 1 sec.
           }),
           deleteUser: builder.mutation<any,IUser>({
             query: (player) => ({

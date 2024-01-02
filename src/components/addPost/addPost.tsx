@@ -1,10 +1,11 @@
 import { useState } from "react";
-import {Link, Navigate} from "react-router-dom";
+import {Link, Navigate, useNavigate} from "react-router-dom";
 import { useAddUserMutation } from "../../services/pokemon";
 
 const AddPost : React.FC = () => {
      const [user, setUser] = useState<string>("");
      const [userId, setUserId] = useState<string>('');
+     const navigate = useNavigate();
    
      const [addUser] = useAddUserMutation();
 
@@ -22,20 +23,17 @@ const AddPost : React.FC = () => {
         
         const body = {user,userId};
         addUser(body).unwrap()
-        .then( (data) => console.log(data));
-        
-      }
+        .then( (data) => {
+            navigate('/');
+        });
+     }
 
      return (<>
-             
                  <label>Player Name : </label>
                  <input type ="text" value ={user} onChange ={updateUser}/>
                  <label>Player Id :</label>
                  <input type="text" value={userId} onChange={ updateId}></input>
-                 <Link to='/'><button onClick={addPlayer}>Add</button></Link>
-                 
-              
-             
+                 <button onClick={addPlayer}>Add</button>
             </>);
 }
 
