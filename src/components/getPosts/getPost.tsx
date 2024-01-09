@@ -75,8 +75,8 @@ const GetPost: React.FC = () => {
         {field : 'actions', type : 'actions', getActions : (params) => [<GridActionsCellItem icon={<DeleteIcon/>} onClick={(ev)=>deletePlayer(params.id as GridRowId)} label="Delete" />]}]
         
       var rows : IPost[] = [];
-      if (data){
-        var rows  =[...data.users];
+      if (data) {
+        var rows  = data.users.filter((player) => player.userName !== '');
       }
       
       console.log(rows);
