@@ -29,9 +29,11 @@ describe('AddPost Component', () => {
                             <App/>
                         </Provider>, {route : '/add'});
         const button = screen.getByRole('button',{name : /Add/});
+        console.log(window.location.href);
         fireEvent.click(button);
+        console.log(window.location.href);
         await waitFor(() => {
-            console.log(window.location.href);
+            
             expect(window.location.href).toBe('http://localhost/');
             expect(screen.getByTestId('text')).toBeInTheDocument(); //Here this text is dynamic.So unable to find element using get,find,query methods.So,use TestId.
         });
